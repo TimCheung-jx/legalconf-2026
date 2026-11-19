@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026广州企业法务大会 · 筹备进度总表（内部协作）</title>
+<style>
+:root{
+  --navy:#0d2440; --navy2:#173c66; --gold:#b98b46; --goldl:#e6cfa6;
+  --bg:#f3f5f9; --card:#fff; --ink:#18202b; --muted:#6d7a8c; --soft:#95a1b3;
+  --line:#e3e8f0; --line2:#eef1f6;
+  --done:#2f7d5c; --done-bg:#e6f2ec;
+  --doing:#1b62b3; --doing-bg:#e5eef9;
+  --todo:#7d8899; --todo-bg:#eef1f5;
+  --late:#c0392b; --late-bg:#fbeae8;
+  --warn:#c07a14; --warn-bg:#fdf3e2;
+  --r:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--bg); color:var(--ink); font-size:13.5px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+
+/* ============ HEADER ============ */
+.top{
+  background:linear-gradient(118deg,#0a1d33 0%,#143a62 52%,#0e2b4a 100%);
+  color:#fff; padding:22px 30px 20px; position:relative; overflow:hidden;
+}
+.top::before{
+  content:""; position:absolute; right:-60px; top:-110px; width:420px; height:420px;
+  border-radius:50%; border:1px solid rgba(185,139,70,.22);
+  box-shadow:0 0 0 60px rgba(185,139,70,.045),0 0 0 130px rgba(185,139,70,.03);
+}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),#d9b878 30%,rgba(185,139,70,.15) 75%,transparent)}
+.top-in{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;position:relative;z-index:1;flex-wrap:wrap}
+.kicker{font-size:11px;letter-spacing:.22em;color:var(--goldl);opacity:.9;margin-bottom:9px}
+h1{font-family:"Songti SC","STSong","SimSun",serif;font-size:27px;font-weight:700;letter-spacing:.02em;line-height:1.3}
+h1 em{font-style:normal;color:var(--goldl);font-size:18px;font-weight:400;margin-left:12px;letter-spacing:.08em}
+.tagline{margin-top:8px;font-size:12.5px;color:#b9c7d8;display:flex;gap:16px;flex-wrap:wrap}
+.tagline span{display:flex;align-items:center;gap:6px}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--gold);display:inline-block}
+
+.cd-box{
+  display:flex;align-items:center;gap:22px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.13);border-radius:12px;padding:12px 20px;backdrop-filter:blur(6px);
+}
+.cd-left label{display:block;font-size:10.5px;color:#a9bace;letter-spacing:.08em;margin-bottom:5px}
+.cd-left input{
+  background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.18);color:#fff;
+  border-radius:6px;padding:5px 8px;font-size:12.5px;color-scheme:dark;width:148px;
+}
+.cd-num{text-align:center;border-left:1px solid rgba(255,255,255,.16);padding-left:22px}
+.cd-num b{font-family:"DIN Alternate","Helvetica Neue",sans-serif;font-size:42px;font-weight:700;color:var(--goldl);line-height:1;letter-spacing:-.02em}
+.cd-num span{font-size:11px;color:#a9bace;margin-left:4px}
+.cd-sub{font-size:10.5px;color:#8fa3b9;margin-top:4px;letter-spacing:.05em}
+
+/* ============ KPI ============ */
+.wrap{max-width:1560px;margin:0 auto;padding:0 22px 60px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:-1px;padding:18px 0 0}
+.kpi{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px 16px 13px;position:relative;overflow:hidden;transition:.18s;
+}
+.kpi:hover{box-shadow:0 4px 18px rgba(16,36,64,.07)}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--line)}
+.kpi.k-done::before{background:var(--done)}
+.kpi.k-doing::before{background:var(--doing)}
+.kpi.k-todo::before{background:var(--todo)}
+.kpi.k-late::before{background:var(--late)}
+.kpi.k-rate::before{background:var(--gold)}
+.kpi .lbl{font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+.kpi .val{font-family:"DIN Alternate","Helvetica Neue",sans-serif;font-size:30px;font-weight:700;line-height:1.15;margin-top:3px;letter-spacing:-.01em}
+.kpi .val small{font-size:12px;font-weight:500;color:var(--soft);margin-left:3px}
+.kpi .sub{font-size:10.5px;color:var(--soft);margin-top:2px}
+.kpi.k-done .val{color:var(--done)} .kpi.k-doing .val{color:var(--doing)}
+.kpi.k-todo .val{color:var(--todo)} .kpi.k-late .val{color:var(--late)}
+.kpi.k-rate .val{color:var(--navy2)}
+
+/* ============ TOOLBAR ============ */
+.toolbar{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  margin-top:14px;padding:9px 12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  position:sticky;top:0;z-index:40;box-shadow:0 2px 12px rgba(16,36,64,.04)
+}
+.tabs{display:flex;background:#eef1f6;border-radius:8px;padding:3px;gap:2px}
+.tab{padding:6px 15px;border-radius:6px;font-size:13px;color:var(--muted);font-weight:500;transition:.15s;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(16,36,64,.13);font-weight:600}
+.sep{width:1px;height:22px;background:var(--line);margin:0 2px}
+.search{position:relative;flex:1;min-width:150px;max-width:260px}
+.search input{
+  width:100%;border:1px solid var(--line);border-radius:7px;padding:7px 10px 7px 30px;
+  background:#fafbfd;outline:none;transition:.15s
+}
+.search input:focus{border-color:#9db7d8;background:#fff;box-shadow:0 0 0 3px rgba(27,98,179,.09)}
+.search svg{position:absolute;left:9px;top:8px;width:14px;height:14px;stroke:var(--soft)}
+.sel{
+  border:1px solid var(--line);border-radius:7px;padding:7px 9px;background:#fafbfd;outline:none;
+  max-width:150px;cursor:pointer
+}
+.sel:focus{border-color:#9db7d8}
+.chk{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);user-select:none;cursor:pointer;padding:0 2px;white-space:nowrap}
+.chk input{accent-color:var(--warn);width:14px;height:14px;cursor:pointer}
+.mini{
+  border:1px solid var(--line);border-radius:7px;padding:6px 11px;font-size:12.5px;color:var(--muted);
+  background:#fff;transition:.15s;white-space:nowrap
+}
+.mini:hover{border-color:#b9c8dc;color:var(--navy);background:#f7f9fc}
+.mini.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.mini.primary:hover{background:var(--navy2)}
+
+/* major chips */
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:10px 2px 0}
+.chip{
+  font-size:12px;padding:4px 11px;border-radius:20px;border:1px solid var(--line);
+  background:#fff;color:var(--muted);transition:.14s;white-space:nowrap
+}
+.chip:hover{border-color:#b9c8dc;color:var(--navy)}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chip .n{opacity:.6;margin-left:4px;font-size:11px}
+
+/* ============ CARDS / VIEWS ============ */
+.view{display:none;animation:fade .22s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.card-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:10px}
+.card-h h3{font-size:14px;font-weight:600;letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+.card-h h3::before{content:"";width:3px;height:13px;background:var(--gold);border-radius:2px}
+.card-h .hint{font-size:11px;color:var(--soft)}
+
+.over-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:14px;margin-top:14px}
+.over-grid2{display:grid;grid-template-columns:1.55fr 1fr;gap:14px;margin-top:14px}
+
+/* major progress rows */
+.mrow{display:grid;grid-template-columns:132px 1fr 96px 54px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line2);cursor:pointer;transition:.13s}
+.mrow:last-child{border-bottom:none}
+.mrow:hover{background:#f8fafc;margin:0 -8px;padding-left:8px;padding-right:8px;border-radius:6px}
+.mrow .mname{font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:6px}
+.mrow .mname i{width:7px;height:7px;border-radius:2px;display:inline-block;flex-shrink:0}
+.bar{height:7px;background:#edf1f6;border-radius:4px;overflow:hidden;position:relative}
+.bar>i{display:block;height:100%;border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.mrow .cnt{font-size:11.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.mrow .pct{font-size:12.5px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;color:var(--navy2)}
+.mrow .late-tag{font-size:10px;color:var(--late);background:var(--late-bg);padding:1px 5px;border-radius:4px}
+
+/* donut */
+.donut-wrap{display:flex;align-items:center;gap:18px;justify-content:center;padding:6px 0 4px}
+.donut{position:relative;width:150px;height:150px;flex-shrink:0}
+.donut svg{transform:rotate(-90deg)}
+.donut .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut .c b{font-family:"DIN Alternate",sans-serif;font-size:29px;line-height:1;color:var(--navy2)}
+.donut .c span{font-size:10.5px;color:var(--soft);margin-top:3px}
+.legend{display:flex;flex-direction:column;gap:9px;flex:1;min-width:0}
+.lg{display:flex;align-items:center;gap:8px;font-size:12px}
+.lg i{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.lg .v{margin-left:auto;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* upcoming */
+.up-item{display:flex;gap:11px;padding:10px 0;border-bottom:1px dashed var(--line2);cursor:pointer;transition:.13s}
+.up-item:last-child{border-bottom:none}
+.up-item:hover{background:#f8fafc;margin:0 -8px;padding-left:8px;padding-right:8px;border-radius:6px}
+.up-date{width:44px;flex-shrink:0;text-align:center;background:#f3f6fa;border-radius:6px;padding:4px 0;height:fit-content}
+.up-date b{display:block;font-size:15px;line-height:1.1;color:var(--navy2);font-family:"DIN Alternate",sans-serif}
+.up-date span{font-size:9.5px;color:var(--soft)}
+.up-date.late{background:var(--late-bg)} .up-date.late b{color:var(--late)}
+.up-body{min-width:0;flex:1}
+.up-body .t{font-size:12.5px;font-weight:500;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-body .m{font-size:10.5px;color:var(--soft);display:flex;gap:8px}
+.mini-bar{height:4px;background:#edf1f6;border-radius:3px;margin-top:6px;overflow:hidden}
+.mini-bar>i{display:block;height:100%;border-radius:3px}
+.empty{text-align:center;color:var(--soft);font-size:12px;padding:24px 0}
+
+/* milestones */
+.ms{position:relative;padding-left:20px}
+.ms::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--goldl),var(--line))}
+.ms-i{position:relative;padding:0 0 15px}
+.ms-i:last-child{padding-bottom:0}
+.ms-i::before{content:"";position:absolute;left:-18.5px;top:5px;width:8px;height:8px;border-radius:50%;background:#fff;border:2px solid var(--gold)}
+.ms-i.past::before{background:var(--gold)}
+.ms-i .d{font-size:11px;color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums}
+.ms-i .n{font-size:12.5px;margin-top:1px}
+.ms-i .o{font-size:10.5px;color:var(--soft)}
+
+/* ============ GANTT ============ */
+.gantt-wrap{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-top:14px;overflow:hidden}
+.gantt-legend{display:flex;gap:16px;padding:11px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap;align-items:center;font-size:11.5px;color:var(--muted)}
+.gantt-legend .li{display:flex;align-items:center;gap:6px}
+.gantt{display:flex;overflow:hidden}
+.g-side{width:352px;flex-shrink:0;border-right:1px solid var(--line);background:#fbfcfe}
+.g-side .g-head{height:46px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;padding:0 14px 8px;font-size:11px;color:var(--soft);letter-spacing:.06em}
+.g-row-label{height:30px;display:flex;align-items:center;padding:0 14px;font-size:12px;border-bottom:1px solid var(--line2);gap:7px;white-space:nowrap}
+.g-row-label.grp{background:#f1f4f9;font-weight:600;font-size:12px;color:var(--navy);height:30px;border-bottom:1px solid var(--line)}
+.g-row-label span.nm{overflow:hidden;text-overflow:ellipsis}
+.g-row-label .who{margin-left:auto;font-size:10px;color:var(--soft);flex-shrink:0}
+.g-scroll{flex:1;overflow-x:auto;overflow-y:hidden}
+.g-inner{position:relative}
+.g-months{height:46px;border-bottom:1px solid var(--line);position:relative;background:#fbfcfe}
+.g-month{position:absolute;top:6px;font-size:11px;color:var(--muted);font-weight:600;padding-left:6px;border-left:1px solid var(--line)}
+.g-days{position:absolute;bottom:0;left:0;right:0;height:18px}
+.g-day{position:absolute;top:0;font-size:9px;color:var(--soft);text-align:center;transform:translateX(-50%)}
+.g-body{position:relative}
+.g-lane{height:30px;border-bottom:1px solid var(--line2);position:relative}
+.g-lane.grp{background:#f7f9fc;height:30px}
+.g-bar{
+  position:absolute;top:7px;height:16px;border-radius:4px;opacity:.92;cursor:pointer;
+  display:flex;align-items:center;transition:.15s;min-width:4px;
+}
+.g-bar:hover{opacity:1;transform:scaleY(1.15);box-shadow:0 2px 8px rgba(16,36,64,.2);z-index:5}
+.g-bar .fill{position:absolute;inset:0;border-radius:4px;opacity:.34;background:#fff}
+.g-bar .lbl{position:relative;font-size:9.5px;color:#fff;padding:0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.g-today{position:absolute;top:0;bottom:0;width:1px;background:var(--late);z-index:8;opacity:.8}
+.g-today::after{display:none}
+.g-conf{position:absolute;top:0;bottom:0;width:2px;background:var(--gold);z-index:7}
+.g-conf::after{display:none}
+.g-weekend{position:absolute;top:0;bottom:0;background:#f6f8fb;z-index:0}
+.g-grid{position:absolute;top:0;bottom:0;width:1px;background:#f0f3f8;z-index:0}
+.g-grid.month{background:#dfe5ee}
+.g-rows{position:relative;z-index:1}
+
+/* ============ BOARD ============ */
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;align-items:start}
+.col{background:#eef1f6;border-radius:10px;padding:10px;min-height:120px}
+.col-h{display:flex;align-items:center;gap:7px;padding:2px 4px 10px;font-size:12.5px;font-weight:600}
+.col-h i{width:8px;height:8px;border-radius:50%}
+.col-h .n{margin-left:auto;font-size:11px;color:var(--soft);background:#fff;border-radius:9px;padding:1px 7px}
+.bcard{background:#fff;border-radius:8px;padding:10px 11px;margin-bottom:8px;border:1px solid var(--line);cursor:pointer;transition:.15s}
+.bcard:hover{box-shadow:0 3px 14px rgba(16,36,64,.09);transform:translateY(-1px);border-color:#cfdcec}
+.bcard .bt{font-size:12.5px;font-weight:500;line-height:1.45;margin-bottom:6px}
+.bcard .bm{display:flex;justify-content:space-between;font-size:10.5px;color:var(--soft);margin-bottom:6px;gap:8px}
+.bcard .bm .mj{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bcard .bp{display:flex;align-items:center;gap:7px}
+.bcard .bp .bar{flex:1;height:4px}
+.bcard .bp span{font-size:10px;color:var(--soft);font-variant-numeric:tabular-nums}
+.pri{font-size:9.5px;padding:1px 5px;border-radius:3px;flex-shrink:0}
+.pri.p1{background:#fbeae8;color:var(--late)} .pri.p2{background:var(--warn-bg);color:var(--warn)} .pri.p3{background:#eef1f5;color:var(--todo)}
+
+/* ============ TABLE ============ */
+.tbl-wrap{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-top:14px;overflow:auto;max-height:calc(100vh - 200px)}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px}
+thead th{
+  position:sticky;top:0;background:#f7f9fc;z-index:3;text-align:left;font-weight:600;
+  color:var(--muted);font-size:11.5px;letter-spacing:.03em;padding:10px 10px;
+  border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none
+}
+thead th:hover{color:var(--navy);background:#eef3f9}
+thead th .ar{display:inline-block;width:0;height:0;margin-left:5px;vertical-align:middle;border-left:3.5px solid transparent;border-right:3.5px solid transparent;border-top:4.5px solid #c3cbd8;opacity:.55;transition:.15s}
+thead th:hover .ar{opacity:.85}
+thead th.sorted .ar{opacity:1;border-top-color:var(--navy2)}
+thead th.sorted.asc .ar{border-top:none;border-bottom:4.5px solid var(--navy2)}
+tbody td{padding:9px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
+tbody tr{cursor:pointer;transition:.1s}
+tbody tr:hover{background:#f7fafd}
+tbody tr.done td:not(.no-dim){}
+.idx{color:var(--soft);font-variant-numeric:tabular-nums;font-size:11.5px;width:38px}
+.mj-cell{white-space:nowrap}
+.mj-pill{font-size:10.5px;padding:2px 7px;border-radius:4px;background:#eef2f8;color:#4a5c73;white-space:nowrap}
+.sub-cell{min-width:230px;font-weight:500}
+.who-cell{white-space:nowrap;position:relative;padding-right:22px!important}
+.edit-ic{position:absolute;right:2px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:4px;font-size:11px;color:#8fa0b6;opacity:0;transition:.14s;display:flex;align-items:center;justify-content:center}
+.edit-ic:hover{background:#e8eef7;color:var(--navy2)}
+tr:hover .edit-ic{opacity:1}
+.d-hint{font-size:10.5px;color:var(--soft);margin-top:5px}
+.status{font-size:10.5px;padding:2px 8px;border-radius:11px;white-space:nowrap;font-weight:500;display:inline-flex;align-items:center;gap:4px}
+.status::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+.st-done{background:var(--done-bg);color:var(--done)}
+.st-doing{background:var(--doing-bg);color:var(--doing)}
+.st-todo{background:var(--todo-bg);color:var(--todo)}
+.st-late{background:var(--late-bg);color:var(--late)}
+.prog-cell{min-width:152px}
+.prog2{display:flex;align-items:center;gap:9px}
+.track{position:relative;flex:1;height:16px;display:flex;align-items:center}
+.track .bar{position:absolute;left:0;right:0;height:6px;z-index:0}
+.track input[type=range]{-webkit-appearance:none;appearance:none;position:relative;z-index:2;width:100%;height:16px;background:transparent;cursor:pointer;margin:0}
+.track input[type=range]::-webkit-slider-runnable-track{height:6px;background:transparent;border-radius:4px}
+.track input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid var(--doing);margin-top:-3.5px;box-shadow:0 1px 4px rgba(16,36,64,.25)}
+.track input[type=range]::-moz-range-track{height:6px;background:transparent}
+.track input[type=range]::-moz-range-thumb{width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--doing)}
+.prog2 .p{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;width:34px;text-align:right}
+.risk-cell{max-width:300px;color:var(--muted);font-size:11.5px;line-height:1.45}
+.warn-i{color:var(--warn)}
+.date-cell{white-space:nowrap;font-variant-numeric:tabular-nums;font-size:11.5px;color:var(--muted)}
+.date-cell.over{color:var(--late);font-weight:600}
+
+/* ============ DRAWER ============ */
+.mask{position:fixed;inset:0;background:rgba(10,22,38,.32);opacity:0;pointer-events:none;transition:.22s;z-index:90;backdrop-filter:blur(2px)}
+.mask.on{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;width:420px;max-width:92vw;background:#fff;z-index:100;
+  transform:translateX(102%);transition:transform .28s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(10,22,38,.18)
+}
+.drawer.on{transform:none}
+.d-head{background:linear-gradient(120deg,#0d2440,#1a3f6b);color:#fff;padding:18px 20px 16px;position:relative}
+.d-head .close{position:absolute;right:14px;top:14px;color:#b9c7d8;font-size:20px;line-height:1;padding:4px 7px;border-radius:6px}
+.d-head .close:hover{background:rgba(255,255,255,.12);color:#fff}
+.d-head .dm{font-size:10.5px;color:var(--goldl);letter-spacing:.08em;margin-bottom:6px}
+.d-head h4{font-size:16px;font-weight:600;line-height:1.45;padding-right:20px}
+.d-body{flex:1;overflow-y:auto;padding:18px 20px 30px}
+.d-sec{margin-bottom:20px}
+.d-sec h5{font-size:11px;color:var(--soft);letter-spacing:.1em;margin-bottom:9px;font-weight:600}
+.d-kv{display:grid;grid-template-columns:76px 1fr;gap:8px 12px;font-size:12.5px}
+.d-kv dt{color:var(--soft);font-size:12px}
+.d-kv dd{color:var(--ink)}
+.d-prog{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.d-prog input[type=range]{flex:1;accent-color:var(--doing);height:5px}
+.d-prog b{font-family:"DIN Alternate",sans-serif;font-size:22px;color:var(--navy2);width:52px;text-align:right}
+.d-note{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:12.5px;min-height:76px;resize:vertical;outline:none;background:#fafbfd}
+.d-note:focus{border-color:#9db7d8;background:#fff}
+.d-input{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:12.5px;outline:none;background:#fafbfd}
+.d-input:focus{border-color:#9db7d8;background:#fff}
+.d-foot{border-top:1px solid var(--line);padding:12px 20px;display:flex;gap:8px;background:#fbfcfe}
+.d-note-tip{font-size:10.5px;color:var(--soft);margin-top:6px}
+.box{background:#f7f9fc;border:1px solid var(--line2);border-radius:8px;padding:11px 13px;font-size:12px;color:var(--muted);line-height:1.6}
+.d-state{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 9px;border-radius:11px;font-weight:500}
+
+footer{max-width:1560px;margin:0 auto;padding:22px;color:var(--soft);font-size:11px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:26px}
+
+/* responsive */
+@media(max-width:1200px){
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .over-grid,.over-grid2{grid-template-columns:1fr}
+  .board{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .top{padding:18px}
+  h1{font-size:21px}
+  h1 em{display:block;margin:6px 0 0;font-size:15px}
+  .cd-box{width:100%;justify-content:space-between}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .g-side{width:180px}
+  .board{grid-template-columns:1fr}
+  .toolbar{position:static}
+  .tbl-wrap{max-height:none}
+}
+@media print{
+  body{background:#fff}
+  .toolbar,.mask,.drawer,footer .no-print,.mini{display:none!important}
+  .top{color:#000;background:#fff;border-bottom:2px solid #0d2440}
+  .top::before,.top::after{display:none}
+  .kicker,h1 em,.tagline,.cd-sub{color:#444}
+  .view{display:none!important} #view-table{display:block!important}
+  .tbl-wrap{max-height:none;border:none}
+  thead th{position:static}
+}
+
+/* ============ CLOUD ============ */
+.userbar{background:#08182b;color:#93a6bd;font-size:11.5px;padding:6px 30px;display:flex;justify-content:space-between;align-items:center;gap:12px;letter-spacing:.04em}
+.userbar .l{display:flex;align-items:center;gap:7px}
+.ub-dot{width:6px;height:6px;border-radius:50%;background:#3ba776;box-shadow:0 0 0 3px rgba(59,167,118,.15)}
+.ub-r{display:flex;align-items:center;gap:14px}
+.sync-pill{font-size:10.5px;padding:1px 8px;border-radius:9px;background:rgba(255,255,255,.08);color:#b9c7d8}
+.sync-pill.s-saving{background:rgba(185,139,70,.22);color:#e6cfa6}
+.sync-pill.s-err{background:rgba(192,57,43,.28);color:#f2b8b3}
+.userbar button{color:#c9d6e5;font-size:11.5px;text-decoration:underline;text-underline-offset:2px}
+.userbar button:hover{color:#fff}
+.gate{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:radial-gradient(1200px 600px at 70% 15%,#1b4675 0%,#0a1c30 55%,#071322 100%)}
+.gate.hide{display:none}
+.gate-card{width:382px;max-width:100%;background:#fff;border-radius:14px;padding:32px 30px 24px;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.gate-kicker{font-size:10.5px;letter-spacing:.16em;color:#b98b46;margin-bottom:10px}
+.gate-card h2{font-family:"Songti SC","STSong",serif;font-size:24px;color:#0d2440;line-height:1.35;margin-bottom:4px;font-weight:700}
+.gate-sub{font-size:12px;color:#8b96a7;margin-bottom:20px}
+.gate-card label{display:block;font-size:11.5px;color:#6d7a8c;margin:12px 0 5px}
+.gate-card input{width:100%;border:1px solid #dfe5ee;border-radius:8px;padding:10px 12px;font-size:13px;outline:none;background:#fafbfd}
+.gate-card input:focus{border-color:#9db7d8;background:#fff;box-shadow:0 0 0 3px rgba(27,98,179,.09)}
+.gate-btn{width:100%;margin-top:18px;background:#0d2440;color:#fff;border-radius:8px;padding:11px;font-size:14px;font-weight:600;letter-spacing:.08em}
+.gate-btn:hover{background:#173c66}
+.gate-btn:disabled{opacity:.6;cursor:default}
+.gate-msg{min-height:17px;font-size:11.5px;color:#6d7a8c;margin-top:10px}
+.gate-msg.err{color:#c0392b}
+.gate-foot{margin-top:16px;padding-top:14px;border-top:1px solid #eef1f6;font-size:11px;color:#a4aebd;line-height:1.65}
+.gate-link{font-size:11.5px;color:#5a7ea8;text-decoration:underline;text-underline-offset:2px;margin-top:10px;display:inline-block}
+.loading{color:#b9c7d8;font-size:13px;padding:30px 0;text-align:center}
+@media print{.userbar,.gate{display:none!important}}
+</style>
+</head>
+<body>
+<div class="userbar">
+  <div class="l"><span class="ub-dot"></span>内部协作版 · 云端实时同步</div>
+  <div class="ub-r">
+    <span class="sync-pill" id="syncPill">已连接</span>
+    <span id="uEmail"></span>
+    <button id="btnSignOut" type="button">退出登录</button>
+  </div>
+</div>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <div class="kicker">广州市律师协会 · 公司律师工作委员会</div>
+      <h1>2026广州企业法务大会<em>筹备进度总表</em></h1>
+      <div class="tagline">
+        <span><i class="dot"></i>法润工商 · 智融未来</span>
+        <span><i class="dot"></i>广州大厦 3A南越厅 + 越华厅×3</span>
+        <span><i class="dot"></i>约270人</span>
+      </div>
+    </div>
+    <div class="cd-box">
+      <div class="cd-left">
+        <label>大会日期（暂定）</label>
+        <input type="date" id="confDate">
+      </div>
+      <div class="cd-num">
+        <b id="daysLeft">—</b><span>天</span>
+        <div class="cd-sub" id="cdSub">距大会召开</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="kpis" id="kpis"></section>
+
+  <div class="toolbar">
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-v="overview">总览</button>
+      <button class="tab" data-v="gantt">甘特图</button>
+      <button class="tab" data-v="board">看板</button>
+      <button class="tab" data-v="table">明细表</button>
+    </div>
+    <div class="sep"></div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input type="text" id="q" placeholder="搜索事项 / 负责人 / 关键词">
+    </div>
+    <select class="sel" id="fOwner"><option value="">全部负责人</option></select>
+    <select class="sel" id="fStatus">
+      <option value="">全部状态</option>
+      <option value="late">已逾期</option>
+      <option value="doing">进行中</option>
+      <option value="todo">未启动</option>
+      <option value="done">已完成</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="fRisk"> 仅看高优先级</label>
+    <button class="mini" id="btnReset">重置筛选</button>
+    <button class="mini primary" id="btnExport">导出 CSV</button>
+  </div>
+
+  <div class="chips" id="chips"></div>
+
+  <!-- ============ 总览 ============ -->
+  <section class="view on" id="view-overview">
+    <div class="over-grid">
+      <div class="card">
+        <div class="card-h"><h3>十大工作板块进度</h3><span class="hint">点击任一板块可筛选</span></div>
+        <div id="majorList"></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>任务状态分布</h3></div>
+        <div class="donut-wrap">
+          <div class="donut">
+            <svg viewBox="0 0 120 120" width="150" height="150" id="donut"></svg>
+            <div class="c"><b id="donePct">0%</b><span>已完成占比</span></div>
+          </div>
+          <div class="legend" id="legend"></div>
+        </div>
+      </div>
+    </div>
+    <div class="over-grid2">
+      <div class="card">
+        <div class="card-h"><h3>未来两周关键节点</h3><span class="hint" id="upHint"></span></div>
+        <div id="upcoming"></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>里程碑</h3></div>
+        <div class="ms" id="msList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 甘特 ============ -->
+  <section class="view" id="view-gantt">
+    <div class="gantt-wrap">
+      <div class="gantt-legend">
+        <span class="li"><i style="width:16px;height:7px;border-radius:2px;background:#2f7d5c;display:inline-block"></i>已完成</span>
+        <span class="li"><i style="width:16px;height:7px;border-radius:2px;background:#1b62b3;display:inline-block"></i>进行中</span>
+        <span class="li"><i style="width:16px;height:7px;border-radius:2px;background:#9aa5b5;display:inline-block"></i>未启动</span>
+        <span class="li"><i style="width:16px;height:7px;border-radius:2px;background:#c0392b;display:inline-block"></i>已逾期</span>
+        <span class="li"><i style="width:2px;height:12px;background:#c0392b;display:inline-block"></i>今天</span>
+        <span class="li"><i style="width:2px;height:12px;background:#b98b46;display:inline-block"></i>大会日</span>
+        <span class="li" style="margin-left:auto;color:#95a1b3">条形右端为计划完成日；悬停查看，点击打开详情</span>
+      </div>
+      <div class="gantt" id="gantt">
+        <div class="g-side" id="gSide"></div>
+        <div class="g-scroll" id="gScroll"><div class="g-inner" id="gInner"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 看板 ============ -->
+  <section class="view" id="view-board">
+    <div class="board" id="board"></div>
+  </section>
+
+  <!-- ============ 表格 ============ -->
+  <section class="view" id="view-table">
+    <div class="tbl-wrap">
+      <table id="tbl">
+        <thead><tr>
+          <th data-k="id">#<span class="ar"></span></th>
+          <th data-k="major">大项目<span class="ar"></span></th>
+          <th data-k="sub">子项目<span class="ar"></span></th>
+          <th data-k="owner">负责人<span class="ar"></span></th>
+          <th data-k="start">开始<span class="ar"></span></th>
+          <th data-k="end">完成时间<span class="ar"></span></th>
+          <th data-k="progress">目前进度<span class="ar"></span></th>
+          <th data-k="status">状态<span class="ar"></span></th>
+          <th data-k="priority">优先级<span class="ar"></span></th>
+          <th data-k="risk">风险与注意点</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <span>基准日期 2026-11-19 ｜ 依据《关于举办“法润工商·智融未来——2026广州企业法务大会”的工作方案》（上会版 1118下午V2）编制 ｜ 大会日期 12月2日（备选3日），节点已按新方案重新倒排</span>
+  <span class="no-print">负责人、协同人、进度均可直接修改 · 实时同步至云端 · 可“导出 CSV”留档</span>
+</footer>
+
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="gate-kicker">广州市律师协会 · 公司律师工作委员会</div>
+    <h2>2026广州企业法务大会</h2>
+    <p class="gate-sub">筹备进度总表 · 内部协作版</p>
+    <form id="loginForm">
+      <label for="loginEmail">邮箱</label>
+      <input id="loginEmail" type="email" autocomplete="username" placeholder="name@example.com" required>
+      <label for="loginPass">密码</label>
+      <input id="loginPass" type="password" autocomplete="current-password" placeholder="请输入密码" required>
+      <button class="gate-btn" id="loginBtn" type="submit">登 录</button>
+      <div class="gate-msg" id="gateMsg"></div>
+    </form>
+    <button class="gate-link" id="btnForgot" type="button">忘记密码 / 首次设置密码</button>
+    <p class="gate-foot">仅限受邀成员访问，账号由筹备组管理员开通。所有修改实时同步，并记录最后修改人。</p>
+  </div>
+</div>
+
+<div class="mask" id="mask"></div>
+<aside class="drawer" id="drawer">
+  <div class="d-head">
+    <button class="close" id="dClose">×</button>
+    <div class="dm" id="dMajor"></div>
+    <h4 id="dTitle"></h4>
+  </div>
+  <div class="d-body" id="dBody"></div>
+  <div class="d-foot">
+    <button class="mini" id="dReset" style="flex:1">恢复默认</button>
+    <button class="mini primary" id="dClose2" style="flex:1">完成</button>
+  </div>
+</aside>
+
+<script>
+const DATA = {"meta":{"title":"2026广州企业法务大会","subtitle":"法润工商 · 智融未来","org":"广州市律师协会 · 公司律师工作委员会","confDate":"2026-12-02","confDateNote":"方案（上会版1118 V2）：12月2日或3日，暂按12月2日倒排","baseline":"2026-11-19","venue":"广州大厦 3A楼南越厅 + 越华厅1/234/5","budget":298000,"scale":"约270人","altDate":"12月3日"},"milestones":[{"date":"2026-11-20","name":"工作方案（上会版）定稿","owner":"Tim（张俊鑫）"},{"date":"2026-11-21","name":"场地、会务合同签署 · 上会文件提交","owner":"会务组 / 顾奇志"},{"date":"2026-11-22","name":"预算批复 · 嘉宾名单锁定","owner":"财务组 / 嘉宾组"},{"date":"2026-11-24","name":"涉外备案完成 · 形象大使确认","owner":"涉外报批组"},{"date":"2026-11-25","name":"报局领导批示完成","owner":"顾奇志"},{"date":"2026-11-27","name":"物料印制完成 · 270人名单锁定","owner":"物料组 / 蔡晓丹"},{"date":"2026-11-29","name":"全要素就绪（人、物、场、稿）","owner":"会务组"},{"date":"2026-12-01","name":"全流程彩排","owner":"会务组"},{"date":"2026-12-02","name":"大会召开（备选12月3日）","owner":"全体"}],"tasks":[]};
+</script>
+<script src="./supabase.js"></script>
+<script>
+/* ================= 基础工具 ================= */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const CFG = { url: "https://pcculccjoxkxmhcunkcj.supabase.co", anonKey: "sb_publishable_XsxJT6nxmuwFhFjSTMOIyw_tpo80Le7" };
+let sb = null, currentUser = null;
+const TODAY = new Date(); TODAY.setHours(0,0,0,0);
+const DAY = 86400000;
+const parseD = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); };
+const fmt = d => `${d.getMonth()+1}月${d.getDate()}日`;
+const fmtShort = d => `${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const days = (a,b) => Math.round((b-a)/DAY);
+
+const MAJOR_COLORS = {
+  '统筹与立项':'#1b62b3','场地与会务':'#2f7d5c','内容与议程':'#7a4fa3',
+  '嘉宾邀请与接待':'#c07a14','物料与视觉':'#0f8a8a','宣传与媒体':'#c0392b',
+  '报批与合规':'#4a5c73','预算与报名':'#8a6d3b','现场执行':'#0d2440','会后收尾':'#8b96a7'
+};
+let MAJORS = [];
+
+let edits = {};   // 云端版：任务数据直接存库，此对象仅作兼容
+
+function T(t){
+  const e = edits[t.id] || {};
+  return Object.assign({}, t, e);
+}
+function allTasks(){ return DATA.tasks.map(T); }
+
+function statusOf(t){
+  if (t.progress >= 100) return 'done';
+  const end = parseD(t.end);
+  if (end < TODAY) return 'late';
+  if (t.progress > 0) return 'doing';
+  return 'todo';
+}
+const ST = {
+  done:{label:'已完成', cls:'st-done', color:'#2f7d5c'},
+  doing:{label:'进行中', cls:'st-doing', color:'#1b62b3'},
+  todo:{label:'未启动', cls:'st-todo', color:'#9aa5b5'},
+  late:{label:'已逾期', cls:'st-late', color:'#c0392b'}
+};
+
+/* ================= 筛选状态 ================= */
+const state = { view:'overview', q:'', majors:new Set(), owner:'', status:'', priorityOnly:false, sort:{k:'id', dir:1} };
+
+function filtered(){
+  const q = state.q.trim().toLowerCase();
+  return allTasks().filter(t=>{
+    if (state.majors.size && !state.majors.has(t.major)) return false;
+    if (state.owner && t.owner !== state.owner) return false;
+    if (state.priorityOnly && t.priority !== '高') return false;
+    const st = statusOf(t);
+    if (state.status && st !== state.status) return false;
+    if (q){
+      const hay = [t.sub, t.owner, t.support, t.major, t.risk, t.deliverable, t.note].join(' ').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+/* ================= 头部 ================= */
+let confDate = parseD(DATA.meta.confDate);
+function renderHeader(){
+  const dl = days(TODAY, confDate);
+  $('#daysLeft').textContent = dl >= 0 ? dl : Math.abs(dl);
+  const alt = DATA.meta.altDate ? ` · 备选${DATA.meta.altDate}` : '';
+  $('#cdSub').textContent = dl >= 0
+    ? `距 ${confDate.getFullYear()}年${fmt(confDate)} 召开${alt}`
+    : `已过 ${Math.abs(dl)} 天 · ${fmt(confDate)}`;
+  $('#confDate').value = DATA.meta.confDate;
+}
+$('#confDate').addEventListener('change', e=>{
+  if (!e.target.value) return;
+  confDate = parseD(e.target.value);
+  renderHeader(); renderGantt(); renderOverview();
+});
+
+/* ================= KPI ================= */
+function renderKPI(){
+  const ts = allTasks();
+  const c = {done:0, doing:0, todo:0, late:0};
+  ts.forEach(t => c[statusOf(t)]++);
+  const rate = Math.round(ts.reduce((s,t)=>s+t.progress,0)/ts.length);
+  const high = ts.filter(t=>t.priority==='高');
+  const highRate = Math.round(high.reduce((s,t)=>s+t.progress,0)/high.length);
+  const html = [
+    {k:'', lbl:'任务总数', val:ts.length, sub:`${MAJORS.length} 个工作板块`, cls:''},
+    {k:'done', lbl:'已完成', val:c.done, sub:`占 ${Math.round(c.done/ts.length*100)}%`, cls:'k-done'},
+    {k:'doing', lbl:'进行中', val:c.doing, sub:`占 ${Math.round(c.doing/ts.length*100)}%`, cls:'k-doing'},
+    {k:'todo', lbl:'未启动', val:c.todo, sub:`占 ${Math.round(c.todo/ts.length*100)}%`, cls:'k-todo'},
+    {k:'late', lbl:'已逾期', val:c.late, sub:c.late ? '需立即处置' : '暂无逾期', cls:'k-late'},
+    {k:'rate', lbl:'平均完成度', val:rate, unit:'%', sub:`关键任务 ${highRate}%`, cls:'k-rate'}
+  ].map(x=>`<div class="kpi ${x.cls}">
+      <div class="lbl">${x.lbl}</div>
+      <div class="val">${x.val}${x.unit?`<small>${x.unit}</small>`:''}</div>
+      <div class="sub">${x.sub}</div>
+    </div>`).join('');
+  $('#kpis').innerHTML = html;
+}
+
+/* ================= 大项目概览 ================= */
+function renderMajorList(){
+  const ts = allTasks();
+  const el = $('#majorList');
+  el.innerHTML = MAJORS.map(m=>{
+    const list = ts.filter(t=>t.major===m);
+    const avg = Math.round(list.reduce((s,t)=>s+t.progress,0)/list.length);
+    const done = list.filter(t=>statusOf(t)==='done').length;
+    const late = list.filter(t=>statusOf(t)==='late').length;
+    const col = MAJOR_COLORS[m] || '#1b62b3';
+    return `<div class="mrow" data-major="${m}">
+      <div class="mname"><i style="background:${col}"></i>${m}${late?`<span class="late-tag">逾期${late}</span>`:''}</div>
+      <div class="bar"><i style="width:${avg}%;background:${col}"></i></div>
+      <div class="cnt">${done}/${list.length} 项</div>
+      <div class="pct">${avg}%</div>
+    </div>`;
+  }).join('');
+  el.querySelectorAll('.mrow').forEach(r=>{
+    r.onclick = ()=>{
+      const m = r.dataset.major;
+      state.majors = new Set([m]);
+      syncChips(); renderAll();
+      setView('table');
+    };
+  });
+}
+
+/* ================= 甜甜圈 ================= */
+function renderDonut(){
+  const ts = allTasks();
+  const c = {done:0, doing:0, todo:0, late:0};
+  ts.forEach(t=>c[statusOf(t)]++);
+  const total = ts.length;
+  const R = 46, C = 2*Math.PI*R;
+  const segs = [['done','#2f7d5c'],['doing','#1b62b3'],['todo','#c3cbd8'],['late','#c0392b']];
+  let off = 0, svg = '';
+  segs.forEach(([k,col])=>{
+    const v = c[k]; if (!v) return;
+    const len = v/total*C;
+    svg += `<circle cx="60" cy="60" r="${R}" fill="none" stroke="${col}" stroke-width="14"
+      stroke-dasharray="${len-1.2} ${C-len+1.2}" stroke-dashoffset="${-off}" stroke-linecap="butt"/>`;
+    off += len;
+  });
+  $('#donut').innerHTML = `<circle cx="60" cy="60" r="${R}" fill="none" stroke="#eef1f6" stroke-width="14"/>` + svg;
+  $('#donePct').textContent = Math.round(c.done/total*100) + '%';
+  $('#legend').innerHTML = segs.map(([k,col])=>{
+    return `<div class="lg"><i style="background:${col}"></i>${ST[k].label}<span class="v">${c[k]}</span></div>`;
+  }).join('') + `<div class="lg" style="border-top:1px solid #eef1f6;padding-top:9px;margin-top:2px;color:#95a1b3;font-size:11px">关键任务完成率<span class="v" style="color:#0d2440">${Math.round(ts.filter(t=>t.priority==='高').reduce((s,t)=>s+t.progress,0)/ts.filter(t=>t.priority==='高').length)}%</span></div>`;
+}
+
+/* ================= 近期节点 ================= */
+function renderUpcoming(){
+  const ts = allTasks().filter(t=>statusOf(t)!=='done');
+  const horizon = 14;
+  let list = ts.filter(t=>{
+    const d = days(TODAY, parseD(t.end));
+    return d <= horizon;
+  }).sort((a,b)=>a.end.localeCompare(b.end)).slice(0,9);
+  $('#upHint').textContent = `按计划完成日排序 · 含逾期项`;
+  if (!list.length){ $('#upcoming').innerHTML = '<div class="empty">未来两周暂无到期任务</div>'; return; }
+  $('#upcoming').innerHTML = list.map(t=>{
+    const d = parseD(t.end);
+    const over = statusOf(t)==='late';
+    const dd = days(TODAY, d);
+    return `<div class="up-item" data-id="${t.id}">
+      <div class="up-date ${over?'late':''}"><b>${d.getDate()}</b><span>${d.getMonth()+1}月</span></div>
+      <div class="up-body">
+        <div class="t">${t.sub}</div>
+        <div class="m"><span>${t.owner}</span><span>·</span><span>${over?`逾期${-dd}天`:dd===0?'今天到期':`剩${dd}天`}</span><span>·</span><span>${t.major}</span></div>
+        <div class="mini-bar"><i style="width:${t.progress}%;background:${over?'#c0392b':'#1b62b3'}"></i></div>
+      </div>
+    </div>`;
+  }).join('');
+  $('#upcoming').querySelectorAll('.up-item').forEach(el=>{
+    el.onclick = ()=>openDrawer(+el.dataset.id);
+  });
+}
+
+/* ================= 里程碑 ================= */
+function renderMilestones(){
+  $('#msList').innerHTML = DATA.milestones.map(m=>{
+    const d = parseD(m.date);
+    const past = d < TODAY;
+    return `<div class="ms-i ${past?'past':''}">
+      <div class="d">${d.getMonth()+1}月${d.getDate()}日 · ${['日','一','二','三','四','五','六'][d.getDay()]}</div>
+      <div class="n">${m.name}</div>
+      <div class="o">${m.owner}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderOverview(){ renderMajorList(); renderDonut(); renderUpcoming(); renderMilestones(); }
+
+/* ================= 甘特 ================= */
+function renderGantt(){
+  const ts = allTasks();
+  if (!ts.length) return;
+  let min = parseD(ts[0].start), max = parseD(ts[0].end);
+  ts.forEach(t=>{ const s=parseD(t.start), e=parseD(t.end); if(s<min)min=s; if(e>max)max=e; });
+  min = new Date(min.getTime() - 3*DAY);
+  max = new Date(max.getTime() + 3*DAY);
+  const DW = 13.2;
+  const totalDays = days(min,max)+1;
+  const W = totalDays*DW;
+
+  // side
+  let side = `<div class="g-head">工作事项 / 负责人</div>`;
+  // months header
+  let months = '', daysRow = '', gridLines = '', weekend = '';
+  for (let i=0;i<totalDays;i++){
+    const d = new Date(min.getTime()+i*DAY);
+    const x = i*DW;
+    if (d.getDate()===1 || i===0){
+      months += `<div class="g-month" style="left:${x}px;width:${DW*31}px">${d.getFullYear()}年${d.getMonth()+1}月</div>`;
+      gridLines += `<div class="g-grid month" style="left:${x}px"></div>`;
+    }
+    if (d.getDay()===0 || d.getDay()===6){
+      weekend += `<div class="g-weekend" style="left:${x}px;width:${DW}px"></div>`;
+    }
+    if (d.getDay()===1 && d.getDate()>2){
+      daysRow += `<div class="g-day" style="left:${x+DW/2}px">${d.getMonth()+1}/${d.getDate()}</div>`;
+    }
+  }
+
+  let lanes = '';
+  MAJORS.forEach(m=>{
+    const list = ts.filter(t=>t.major===m);
+    if (!list.length) return;
+    side += `<div class="g-row-label grp"><span class="nm" style="color:${MAJOR_COLORS[m]}">${m}</span><span class="who">${list.length}项</span></div>`;
+    lanes += `<div class="g-lane grp"></div>`;
+    list.forEach(t=>{
+      side += `<div class="g-row-label"><span class="nm">${t.sub}</span><span class="who">${t.owner}</span></div>`;
+      const s = parseD(t.start), e = parseD(t.end);
+      const x = days(min,s)*DW;
+      const w = Math.max(days(s,e)+1, 1)*DW;
+      const st = statusOf(t);
+      const col = ST[st].color;
+      lanes += `<div class="g-lane">
+        <div class="g-bar" style="left:${x}px;width:${w}px;background:${col}" data-id="${t.id}" title="${t.sub}｜${t.owner}｜${t.start}→${t.end}｜${st}">
+          ${w>52?`<div class="fill" style="width:${t.progress}%;left:0"></div><span class="lbl">${t.progress}%</span>`:''}
+        </div>
+      </div>`;
+    });
+  });
+
+  const todayX = days(min,TODAY)*DW;
+  const confX = days(min,confDate)*DW;
+  const marks = (confX>=0 && confX<=W ? `<div class="g-conf" style="left:${confX}px"></div>` : '')
+              + (todayX>=0 && todayX<=W ? `<div class="g-today" style="left:${todayX}px"></div>` : '');
+
+  $('#gSide').innerHTML = side;
+  $('#gInner').innerHTML = `
+    <div class="g-months">${months}<div class="g-days" style="position:absolute;bottom:0;left:0;right:0;height:18px">${daysRow}</div></div>
+    <div class="g-rows" style="position:relative;width:${W}px">
+      ${weekend}${gridLines}${lanes}${marks}
+    </div>`;
+  $('#gInner').style.width = W + 'px';
+  $('#gInner').querySelectorAll('.g-bar').forEach(b=>{
+    b.onclick = ()=>openDrawer(+b.dataset.id);
+  });
+}
+
+/* ================= 看板 ================= */
+function renderBoard(){
+  const ts = filtered();
+  const cols = [['late','已逾期','#c0392b'],['doing','进行中','#1b62b3'],['todo','未启动','#9aa5b5'],['done','已完成','#2f7d5c']];
+  $('#board').innerHTML = cols.map(([k,label,col])=>{
+    const list = ts.filter(t=>statusOf(t)===k).sort((a,b)=>a.end.localeCompare(b.end));
+    return `<div class="col">
+      <div class="col-h"><i style="background:${col}"></i>${label}<span class="n">${list.length}</span></div>
+      ${list.map(t=>{
+        const d = parseD(t.end);
+        return `<div class="bcard" data-id="${t.id}">
+          <div class="bt">${t.sub}</div>
+          <div class="bm"><span class="mj">${t.major}</span><span>${fmtShort(d)}</span></div>
+          <div class="bp">
+            <div class="bar"><i style="width:${t.progress}%;background:${MAJOR_COLORS[t.major]||'#1b62b3'}"></i></div>
+            <span>${t.progress}%</span>
+            <span class="pri p${t.priority==='高'?1:t.priority==='中'?2:3}">${t.priority}</span>
+          </div>
+          <div class="bm" style="margin:6px 0 0"><span>${t.owner}</span></div>
+        </div>`;
+      }).join('') || '<div class="empty">无</div>'}
+    </div>`;
+  }).join('');
+  $('#board').querySelectorAll('.bcard').forEach(c=>{
+    c.onclick = ()=>openDrawer(+c.dataset.id);
+  });
+}
+
+/* ================= 表格 ================= */
+function renderTable(){
+  const list = filtered().slice().sort((a,b)=>{
+    const k = state.sort.k, dir = state.sort.dir;
+    let va = a[k], vb = b[k];
+    if (k==='status'){ va = statusOf(a); vb = statusOf(b); }
+    if (typeof va === 'number') return (va-vb)*dir;
+    return String(va).localeCompare(String(vb),'zh')*dir;
+  });
+  $('#tbody').innerHTML = list.map(t=>{
+    const st = statusOf(t);
+    const over = st==='late';
+    return `<tr data-id="${t.id}" class="${st==='done'?'is-done':''}">
+      <td class="idx">${String(t.id).padStart(2,'0')}</td>
+      <td class="mj-cell"><span class="mj-pill" style="border-left:3px solid ${MAJOR_COLORS[t.major]||'#1b62b3'}">${t.major}</span></td>
+      <td class="sub-cell">${t.sub}</td>
+      <td class="who-cell">${t.owner}${t.support?`<span style="color:#a9b4c4;font-size:10.5px;display:block">协同：${t.support}</span>`:''}
+        <button class="edit-ic" data-id="${t.id}" title="修改负责人 / 协同">✎</button></td>
+      <td class="date-cell">${fmtShort(parseD(t.start))}</td>
+      <td class="date-cell ${over?'over':''}">${fmtShort(parseD(t.end))}</td>
+      <td class="prog-cell">
+        <div class="prog2">
+          <div class="track">
+            <div class="bar"><i style="width:${t.progress}%;background:${ST[st].color}"></i></div>
+            <input type="range" min="0" max="100" step="5" value="${t.progress}" data-id="${t.id}" onclick="event.stopPropagation()">
+          </div>
+          <span class="p">${t.progress}%</span>
+        </div>
+      </td>
+      <td><span class="status ${ST[st].cls}">${ST[st].label}</span></td>
+      <td><span class="pri p${t.priority==='高'?1:t.priority==='中'?2:3}">${t.priority}</span></td>
+      <td class="risk-cell">${t.risk}</td>
+    </tr>`;
+  }).join('') || `<tr><td colspan="10"><div class="empty">没有符合条件的任务</div></td></tr>`;
+
+  $('#tbody').querySelectorAll('tr[data-id]').forEach(tr=>{
+    tr.onclick = ()=>openDrawer(+tr.dataset.id);
+  });
+  $('#tbody').querySelectorAll('.edit-ic').forEach(b=>{
+    b.onclick = e=>{
+      e.stopPropagation();
+      const id = +b.dataset.id;
+      openDrawer(id);
+      setTimeout(()=>{ const f=$('#dOwner'); if(f){ f.focus(); f.select(); } }, 320);
+    };
+  });
+  $('#tbody').querySelectorAll('input[type=range]').forEach(inp=>{
+    inp.oninput = e=>{
+      const id = +e.target.dataset.id;
+      setProgress(id, +e.target.value, false);
+      e.target.closest('tr').querySelector('.bar>i').style.width = e.target.value+'%';
+      e.target.closest('tr').querySelector('.p').textContent = e.target.value+'%';
+    };
+    inp.onchange = ()=>renderAll();
+  });
+}
+
+function markSort(){
+  $$('thead th').forEach(th=>{
+    th.classList.toggle('sorted', th.dataset.k===state.sort.k);
+    th.classList.toggle('asc', th.dataset.k===state.sort.k && state.sort.dir===1);
+  });
+}
+$$('thead th').forEach(th=>{
+  th.onclick = ()=>{
+    const k = th.dataset.k;
+    if (state.sort.k===k) state.sort.dir *= -1;
+    else state.sort = {k, dir:1};
+    markSort(); renderTable();
+  };
+});
+
+/* ================= 抽屉 ================= */
+let curId = null;
+function openDrawer(id){
+  curId = id;
+  const t = T(DATA.tasks.find(x=>x.id===id));
+  const st = statusOf(t);
+  $('#dMajor').textContent = t.major + ' · 序号 ' + String(t.id).padStart(2,'0');
+  $('#dTitle').textContent = t.sub;
+  const d = parseD(t.end);
+  const dl = days(TODAY, d);
+  $('#dBody').innerHTML = `
+    <div class="d-sec">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px">
+        <span class="status ${ST[st].cls}">${ST[st].label}</span>
+        <span class="pri p${t.priority==='高'?1:t.priority==='中'?2:3}">${t.priority}优先级</span>
+        <span style="font-size:11px;color:${st==='done'?'#2f7d5c':dl<0?'#c0392b':'#6d7a8c'}">${st==='done'?`已完成 · 计划 ${t.end.slice(5).replace('-','/')}`:dl<0?`逾期 ${-dl} 天`:`距计划完成 ${dl} 天`}</span>
+      </div>
+      <div class="d-prog">
+        <input type="range" min="0" max="100" step="5" value="${t.progress}" id="dRange">
+        <b id="dPct">${t.progress}%</b>
+      </div>
+      <div class="bar" style="height:8px"><i id="dBar" style="width:${t.progress}%;background:${ST[st].color}"></i></div>
+    </div>
+    <div class="d-sec">
+      <h5>责任分工</h5>
+      <dl class="d-kv">
+        <dt>负责人</dt><dd><input class="d-input" id="dOwner" value="${t.owner}" placeholder="填写负责人"></dd>
+        <dt>协同</dt><dd><input class="d-input" id="dSupport" value="${t.support || ''}" placeholder="填写协同部门或人员"></dd>
+        <dt>开始时间</dt><dd>${t.start}</dd>
+        <dt>完成时间</dt><dd>${t.end}（${['周日','周一','周二','周三','周四','周五','周六'][d.getDay()]}）</dd>
+        <dt>交付物</dt><dd>${t.deliverable || '—'}</dd>
+      </dl>
+      <div class="d-hint">负责人、协同人可直接修改，自动保存</div>
+    </div>
+    <div class="d-sec">
+      <h5>风险与注意点</h5>
+      <div class="box">${t.risk || '暂无'}</div>
+    </div>
+    <div class="d-sec">
+      <h5>最新进展 / 备注</h5>
+      <textarea class="d-note" id="dNote" placeholder="填写当前进展、卡点、需协调事项…">${t.note || ''}</textarea>
+      <div class="d-note-tip">修改实时同步至云端，并记录修改人</div>
+    </div>
+  `;
+  $('#dRange').oninput = e=>{
+    const v = +e.target.value;
+    setProgress(id, v, false);
+    $('#dPct').textContent = v+'%';
+    $('#dBar').style.width = v+'%';
+    $('#dBar').style.background = ST[statusOf(Object.assign({},t,{progress:v}))].color;
+  };
+  $('#dRange').onchange = ()=>renderAll();
+  $('#dOwner').oninput = e=>{ setEdit(id,{owner:e.target.value}); renderAll(true); };
+  $('#dSupport').oninput = e=>{ setEdit(id,{support:e.target.value}); renderAll(true); };
+  $('#dNote').oninput = e=>{ setEdit(id,{note:e.target.value}); };
+  $('#mask').classList.add('on');
+  $('#drawer').classList.add('on');
+}
+function closeDrawer(){ $('#mask').classList.remove('on'); $('#drawer').classList.remove('on'); curId=null; }
+$('#mask').onclick = closeDrawer;
+$('#dClose').onclick = closeDrawer;
+$('#dClose2').onclick = closeDrawer;
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
+
+const pending = new Set();
+let saveTimer = null;
+function setEdit(id, patch){
+  const t = DATA.tasks.find(x=>x.id===id);
+  if (t) Object.assign(t, patch);
+  edits[id] = Object.assign({}, edits[id]||{}, patch);
+  pending.add(+id);
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(flush, 700);
+}
+async function flush(){
+  if (!sb || pending.size === 0) return;
+  const ids = [...pending]; pending.clear();
+  setSync('saving');
+  const rows = ids.map(id=>{
+    const t = DATA.tasks.find(x=>x.id===id);
+    return { id, owner:t.owner, support:t.support, progress:t.progress, note:t.note||'',
+             updated_at:new Date().toISOString(), updated_by:(currentUser&&currentUser.email)||'' };
+  });
+  let failed = false;
+  for (const r of rows){
+    const { error } = await sb.from('tasks').update({
+      owner:r.owner, support:r.support, progress:r.progress, note:r.note,
+      updated_at:r.updated_at, updated_by:r.updated_by
+    }).eq('id', r.id);
+    if (error){ failed = true; console.error(error); }
+  }
+  setSync(failed ? 'err' : 'ok', failed ? '保存失败' : undefined);
+}
+function setProgress(id, v, rerender=true){
+  setEdit(id, {progress: Math.max(0,Math.min(100,Math.round(v)))});
+  if (rerender) renderAll(true);
+}
+$('#dReset').style.display = 'none';
+
+/* ================= 工具栏 ================= */
+function setView(v){
+  state.view = v;
+  $$('.tab').forEach(b=>b.classList.toggle('on', b.dataset.v===v));
+  $$('.view').forEach(s=>s.classList.toggle('on', s.id==='view-'+v));
+  if (v==='board') renderBoard();
+  if (v==='table') renderTable();
+  if (v==='gantt') setTimeout(renderGantt, 20);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+$$('.tab').forEach(b=> b.onclick = ()=>setView(b.dataset.v));
+
+function renderChips(){
+  const ts = allTasks();
+  $('#chips').innerHTML = MAJORS.map(m=>{
+    const n = ts.filter(t=>t.major===m).length;
+    return `<button class="chip ${state.majors.has(m)?'on':''}" data-m="${m}">${m}<span class="n">${n}</span></button>`;
+  }).join('') + `<button class="chip" id="chipAll" style="border-style:dashed">全部板块</button>`;
+  $$('.chip[data-m]').forEach(c=>{
+    c.onclick = ()=>{
+      const m = c.dataset.m;
+      if (state.majors.has(m)) state.majors.delete(m); else state.majors.add(m);
+      syncChips(); renderAll();
+    };
+  });
+  $('#chipAll').onclick = ()=>{ state.majors.clear(); syncChips(); renderAll(); };
+}
+function syncChips(){ renderChips(); }
+
+function renderOwnerOptions(){
+  const owners = [...new Set(allTasks().map(t=>t.owner))].sort((a,b)=>a.localeCompare(b,'zh'));
+  $('#fOwner').innerHTML = '<option value="">全部负责人</option>' + owners.map(o=>`<option ${o===state.owner?'selected':''}>${o}</option>`).join('');
+}
+$('#q').oninput = e=>{ state.q = e.target.value; renderAll(); };
+$('#fOwner').onchange = e=>{ state.owner = e.target.value; renderAll(); };
+$('#fStatus').onchange = e=>{ state.status = e.target.value; renderAll(); };
+$('#fRisk').onchange = e=>{ state.priorityOnly = e.target.checked; renderAll(); };
+$('#btnReset').onclick = ()=>{
+  state.q=''; state.owner=''; state.status=''; state.priorityOnly=false; state.majors.clear();
+  $('#q').value=''; $('#fOwner').value=''; $('#fStatus').value=''; $('#fRisk').checked=false;
+  syncChips(); renderAll();
+};
+
+/* ================= 导出 ================= */
+function exportCSV(){
+  const list = filtered();
+  const head = ['序号','大项目','子项目','负责人','协同','开始时间','完成时间','进度(%)','状态','优先级','交付物','风险与注意点','最新进展'];
+  const rows = list.map(t=>{
+    const st = ST[statusOf(t)].label;
+    return [t.id,t.major,t.sub,t.owner,t.support,t.start,t.end,t.progress,st,t.priority,t.deliverable,t.risk,(edits[t.id]&&edits[t.id].note)||t.note||''];
+  });
+  const csv = [head, ...rows].map(r=>r.map(x=>`"${String(x==null?'':x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `2026法务大会筹备进度_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+}
+$('#btnExport').onclick = exportCSV;
+
+/* ================= 渲染入口 ================= */
+function renderAll(keepDrawer=false){
+  renderKPI();
+  renderOverview();
+  if (state.view==='gantt') renderGantt();
+  if (state.view==='board') renderBoard();
+  if (state.view==='table') renderTable();
+  renderOwnerOptions();
+}
+
+/* ================= 云端同步 ================= */
+function setSync(state, text){
+  const el = $('#syncPill'); if (!el) return;
+  el.className = 'sync-pill s-' + state;
+  el.textContent = text || ({ok:'已同步', saving:'保存中…', err:'同步异常', idle:'已连接'}[state] || '');
+}
+function gateMsg(t, isErr){
+  const el = $('#gateMsg'); if (!el) return;
+  el.textContent = t || ''; el.className = 'gate-msg' + (isErr ? ' err' : '');
+}
+function showGate(){ $('#gate').classList.remove('hide'); }
+function hideGate(){ $('#gate').classList.add('hide'); }
+
+async function loadTasks(){
+  const { data, error } = await sb.from('tasks').select('*').order('id', { ascending:true });
+  if (error){ throw error; }
+  DATA.tasks = (data||[]).map(r=>({
+    id:r.id, major:r.major, sub:r.sub, owner:r.owner, support:r.support,
+    start:r.start_date, end:r.end_date, progress:r.progress, priority:r.priority,
+    deliverable:r.deliverable, risk:r.risk, note:r.note
+  }));
+  MAJORS = [...new Set(DATA.tasks.map(t=>t.major))];
+}
+
+function subscribe(){
+  sb.channel('tasks-stream')
+    .on('postgres_changes', { event:'*', schema:'public', table:'tasks' }, payload=>{
+      const r = payload.new;
+      if (!r || !r.id) return;
+      if (pending.has(r.id)) return;
+      if (r.updated_by && currentUser && r.updated_by === currentUser.email) return;
+      const t = DATA.tasks.find(x=>x.id===r.id);
+      if (!t) return;
+      Object.assign(t, { owner:r.owner, support:r.support, progress:r.progress, note:r.note });
+      renderAll(true);
+      setSync('ok','已同步他人修改');
+      setTimeout(()=>setSync('ok'), 2200);
+    })
+    .subscribe();
+}
+
+async function startApp(){
+  try {
+    await loadTasks();
+  } catch(err){
+    hideGate();
+    gateMsg('数据读取失败：' + (err.message||err), true);
+    showGate(); return;
+  }
+  hideGate();
+  $('#uEmail').textContent = (currentUser && currentUser.email) || '';
+  renderHeader(); renderChips(); renderAll(); markSort(); setView('overview');
+  subscribe(); setSync('ok');
+}
+
+async function boot(){
+  if (!CFG.url || CFG.url.indexOf('YOUR-') === 0 || !CFG.anonKey || CFG.anonKey.indexOf('YOUR-') === 0){
+    gateMsg('尚未配置云端连接，请联系管理员。', true); return;
+  }
+  sb = supabase.createClient(CFG.url, CFG.anonKey, {
+    auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
+  });
+  const { data:{ session } } = await sb.auth.getSession();
+  if (session){ currentUser = session.user; await startApp(); }
+  sb.auth.onAuthStateChange((event, s)=>{
+    if (event === 'SIGNED_OUT'){ currentUser = null; showGate(); }
+  });
+}
+
+const ERR_MAP = {
+  'Invalid login credentials':'邮箱或密码不正确',
+  'Email not confirmed':'邮箱尚未确认，请查收邀请邮件',
+  'User not found':'账号不存在，请联系管理员开通',
+  'Too many requests':'尝试过于频繁，请稍后再试',
+  'Failed to fetch':'网络连接失败，请检查网络后重试'
+};
+$('#loginForm').onsubmit = async e=>{
+  e.preventDefault();
+  const email = $('#loginEmail').value.trim();
+  const pass = $('#loginPass').value;
+  if (!email || !pass) return;
+  const btn = $('#loginBtn');
+  btn.disabled = true; btn.textContent = '登录中…'; gateMsg('');
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+  btn.disabled = false; btn.textContent = '登 录';
+  if (error){ gateMsg(ERR_MAP[error.message] || error.message, true); return; }
+  currentUser = data.user;
+  await startApp();
+};
+$('#btnForgot').onclick = async ()=>{
+  const email = $('#loginEmail').value.trim();
+  if (!email){ gateMsg('请先填写邮箱', true); return; }
+  const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+  if (error) gateMsg('发送失败：' + error.message, true);
+  else gateMsg('重置邮件已发送，请查收邮箱（含垃圾邮件）');
+};
+$('#btnSignOut').onclick = async ()=>{ if (sb) await sb.auth.signOut(); location.reload(); };
+
+boot();
+</script>
+</body>
+</html>
