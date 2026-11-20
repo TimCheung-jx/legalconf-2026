@@ -405,7 +405,7 @@ footer{max-width:1560px;margin:0 auto;padding:22px;color:var(--soft);font-size:1
     </div>
     <div class="cd-box">
       <div class="cd-left">
-        <label>大会日期（暂定）</label>
+        <label>大会日期（可修改）</label>
         <input type="date" id="confDate">
       </div>
       <div class="cd-num">
@@ -560,7 +560,7 @@ footer{max-width:1560px;margin:0 auto;padding:22px;color:var(--soft);font-size:1
 </aside>
 
 <script>
-const DATA = {"meta":{"title":"2026广州企业法务大会","subtitle":"法润工商 · 智融未来","org":"广州市律师协会 · 公司律师工作委员会","confDate":"2026-12-02","confDateNote":"方案（上会版1118 V2）：12月2日或3日，暂按12月2日倒排","baseline":"2026-11-19","venue":"广州大厦 3A楼南越厅 + 越华厅1/234/5","budget":298000,"scale":"约270人","altDate":"12月3日"},"milestones":[{"date":"2026-11-20","name":"工作方案（上会版）定稿","owner":"Tim（张俊鑫）"},{"date":"2026-11-21","name":"场地、会务合同签署 · 上会文件提交","owner":"会务组 / 顾奇志"},{"date":"2026-11-22","name":"预算批复 · 嘉宾名单锁定","owner":"财务组 / 嘉宾组"},{"date":"2026-11-24","name":"涉外备案完成 · 形象大使确认","owner":"涉外报批组"},{"date":"2026-11-25","name":"报局领导批示完成","owner":"顾奇志"},{"date":"2026-11-27","name":"物料印制完成 · 270人名单锁定","owner":"物料组 / 蔡晓丹"},{"date":"2026-11-29","name":"全要素就绪（人、物、场、稿）","owner":"会务组"},{"date":"2026-12-01","name":"全流程彩排","owner":"会务组"},{"date":"2026-12-02","name":"大会召开（备选12月3日）","owner":"全体"}],"tasks":[]};
+const DATA = {"meta":{"title":"2026广州企业法务大会","subtitle":"法润工商 · 智融未来","org":"广州市律师协会 · 公司律师工作委员会","confDate":"2026-12-03","confDateNote":"已定：2026年12月3日","baseline":"2026-11-19","venue":"广州大厦 3A楼南越厅 + 越华厅1/234/5","budget":298000,"scale":"约270人","altDate":""},"milestones":[{"date":"2026-11-20","name":"工作方案（上会版）定稿","owner":"Tim（张俊鑫）"},{"date":"2026-11-21","name":"场地、会务合同签署 · 上会文件提交","owner":"会务组 / 顾奇志"},{"date":"2026-11-22","name":"预算批复 · 嘉宾名单锁定","owner":"财务组 / 嘉宾组"},{"date":"2026-11-24","name":"涉外备案完成 · 形象大使确认","owner":"涉外报批组"},{"date":"2026-11-25","name":"报局领导批示完成","owner":"顾奇志"},{"date":"2026-11-27","name":"物料印制完成 · 270人名单锁定","owner":"物料组 / 蔡晓丹"},{"date":"2026-11-29","name":"全要素就绪（人、物、场、稿）","owner":"会务组"},{"date":"2026-12-02","name":"全流程彩排","owner":"会务组"},{"date":"2026-12-03","name":"大会召开","owner":"全体"}],"tasks":[]};
 </script>
 <script src="./supabase.js"></script>
 <script>
@@ -633,13 +633,33 @@ function renderHeader(){
   $('#cdSub').textContent = dl >= 0
     ? `距 ${confDate.getFullYear()}年${fmt(confDate)} 召开${alt}`
     : `已过 ${Math.abs(dl)} 天 · ${fmt(confDate)}`;
-  $('#confDate').value = DATA.meta.confDate;
+  $('#confDate').value = isoD(confDate);
 }
 $('#confDate').addEventListener('change', e=>{
   if (!e.target.value) return;
   confDate = parseD(e.target.value);
   renderHeader(); renderGantt(); renderOverview();
+  saveConfDate(e.target.value);
 });
+function isoD(dt){ return dt.getFullYear() + '-' + String(dt.getMonth()+1).padStart(2,'0') + '-' + String(dt.getDate()).padStart(2,'0'); }
+async function saveConfDate(v){
+  if (!sb) return;
+  setSync('saving');
+  const { error } = await sb.from('settings').upsert({
+    key: 'conf_date', value: v,
+    updated_at: new Date().toISOString(),
+    updated_by: (currentUser && currentUser.email) || ''
+  }, { onConflict: 'key' });
+  setSync(error ? 'err' : 'ok', error ? '日期保存失败' : undefined);
+}
+async function loadSettings(){
+  try {
+    const { data, error } = await sb.from('settings').select('key,value');
+    if (error) return;
+    const row = (data || []).find(r=>r.key === 'conf_date');
+    if (row && /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(row.value)) confDate = parseD(row.value);
+  } catch(e){ console.warn('settings skipped', e); }
+}
 
 /* ================= KPI ================= */
 function renderKPI(){
@@ -1134,12 +1154,24 @@ function subscribe(){
       setSync('ok','已同步他人修改');
       setTimeout(()=>setSync('ok'), 2200);
     })
+    .on('postgres_changes', { event:'*', schema:'public', table:'settings' }, payload=>{
+      const r = payload.new;
+      if (!r || r.key !== 'conf_date') return;
+      if (r.updated_by && currentUser && r.updated_by === currentUser.email) return;
+      if (/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(r.value)){
+        confDate = parseD(r.value);
+        renderHeader(); renderGantt(); renderOverview();
+        setSync('ok','已同步大会日期');
+        setTimeout(()=>setSync('ok'), 2200);
+      }
+    })
     .subscribe();
 }
 
 async function startApp(){
   try {
     await loadTasks();
+    await loadSettings();
   } catch(err){
     hideGate();
     gateMsg('数据读取失败：' + (err.message||err), true);
